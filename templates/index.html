@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amaia Dravet - Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+
+  <body>
+    <header>
+      <img
+        src="{{ url_for('static', filename='images/logo.png') }}"
+        alt="logo"
+      />
+      <nav>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href=" {{url_for('gallery')}}">Galerie</a></li>
+          <li><a href=" {{url_for('contact')}}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="wrapper">
+        <!-- Presentation -->
+        <section id="pres-bg">
+            <section id="presentation">
+                <h1 id="name">Amaia DRAVET</h1>
+                <h3 id="job">PHOTOGRAPHE AMATRICE</h3>
+            </section>
+        </section>
+
+        <!-- Projets -->
+        <section id="projets">
+            <h2 class="introducer">Quelques uns de mes shootings</h2>
+            <article class="gallery">
+                <ul>
+                    {% for cover in covers %}
+                    <li class="cover">
+                    <a href="{{ url_for('project_detail', project_name=cover[:-4]) }}">
+                        <img
+                        src="{{ url_for('static', filename='covers/' ~ cover) }}"
+                        alt="cover"
+                        class="not-active"
+                        />
+                        <p class="project-title">{{ cover[:-4] }}</p>
+                    </a>
+                    </li>
+                    {% endfor %}
+                    <li id="more">
+                      <p>Voir d'autres shootings</p>
+                      <button id="plus">
+                          <span class="material-symbols-outlined"> add </span>
+                      </button>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Tarifs -->
+        <section id="tarifs">
+            <h2 class="introducer">Mes tarifs</h2>
+            <article class="prices">
+                <ul>
+                    <li class="price">
+                      <h3>VTT</h3>
+                      <p>50€</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum sapien sed accumsan interdum. </p>
+                      <a href="#">En savoir plus</a>
+                    </li>
+                    <li class="price">
+                      <h3>Danse</h3>
+                      <p>20€</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum sapien sed accumsan interdum. </p>
+                      <a href="#">En savoir plus</a>
+                    </li>
+                    <li class="price">
+                      <h3>Portrait / Personnes</h3>
+                      <p>10€</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum sapien sed accumsan interdum. </p>
+                      <a href="#">En savoir plus</a>
+                    </li>
+                </ul>
+            </article> 
+        </section>
+    </main>
+
+    <footer>
+      <div id="author">
+        <p>Amaia <strong>DRAVET</strong></p>
+      </div>
+      <div id="credentials">
+        <h1 id="developper"> &copy; Maxime BOURCIEZ - 2024 </h1>
+        <a href="#"> Conditions Générales d'utilisation - CGU </a>
+        <a href="#"> Mentions légales </a>
+      </div>
+    </footer>
+  </body>
+</html>
