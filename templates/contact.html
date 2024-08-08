@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Me contacter</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
     <header>
@@ -19,6 +20,25 @@
           </ul>
         </nav>
     </header>
+
+    <main id="contact">
+      <section id="contact-wrapper">
+        <article id="direct">
+          <p>Vous préférez un contact direct ?</p>
+          <div class="logos">
+            {% for logo in logos %}
+              <a href="">
+                <img src="{{url_for('static', filename='logos/ ~ logo')}}">
+              </a>
+              <p>{{logo}}</p>
+              {% endfor %}
+          </div>
+        </article>
+        <article id="database">
+          
+        </article>
+      </section>
+    </main>
 
     <footer>
         <div id="author">

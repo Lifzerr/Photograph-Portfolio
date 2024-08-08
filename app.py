@@ -17,14 +17,17 @@ def project_detail(project_name):
     project_images = os.listdir(project_dir)    
     return render_template('project_detail.html', project_name=project_name, projectImages=project_images)
 
-@app.route('/static')
+@app.route('/')
 def gallery():
     covers = getCovers()
     return render_template('gallery.html', covers=covers)
 
-@app.route('/static')
+@app.route('/templates')
 def contact():
-    return render_template('contact.html')
+    # Récupérer les images svg pour les logos 
+    path = os.path.join('static/logos')
+    logos = os.listdir(path)
+    return render_template('contact.html', logos=logos)
 
 if __name__ == '__main__':
     app.run(debug=True)
